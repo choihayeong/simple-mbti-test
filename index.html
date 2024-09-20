@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The simplest mbti test</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <div class="wrap">
+        <!-- gate -->
+        <section id="gate" class="gate">
+            <h3>The Simplest MBTI TEST</h3>
+            
+            <button type="button" id="btnStart">시작 하기</button>
+        </section>
+        <!-- //gate -->
+
+        <!-- qna -->
+        <section id="qna" class="qna">
+            <span>🧊</span>
+
+            <div class="qna__status"></div>
+
+            <div id="question" class="qna__question"></div>
+            <div class="qna__answer"></div>
+        </section>
+        <!-- //qna -->
+
+        <!-- result -->
+        <section id="result" class="result">
+            <span>Your Mbti is...</span>
+            <span id="mbtiResult"></span>
+        </section>
+        <!-- //result -->
+
+        <footer>
+            <!-- 
+            references : 
+            - [테스트잇 당신은 왜그럴까](https://test-it.co.kr/test193.html)
+            - (개인 github)[https://github.com/nani6765/ImpressionTest]
+            -->
+        </footer>
+    </div>
+
+    <script src="./script/data.js"></script>
+    <script src="./script/start.js"></script>
+</body>
+</html>
