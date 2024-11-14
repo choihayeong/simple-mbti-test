@@ -4,6 +4,11 @@ import QnaItem from "../components/QnaItem";
 const TestPage = () => {
     const [qIdx, setIdx] = useState(0);
 
+    const getQuestionIdx = () => {
+        setIdx(qIdx + 1);
+    };
+
+    // 아래 data는 react 상태 관리 라이브러리인 redux를 이용할 예정
     const qnaList = [
         {
             q: "붕어빵 장사를 시작했는데 손님이 한 명도 없엉",
@@ -165,7 +170,9 @@ const TestPage = () => {
 
     return (
         <section id="qna" className="qna">
-            {qnaList.map((item, index) => (<QnaItem key={index} question={item.q} answers={item.a} />))}
+            <QnaItem question={qnaList[qIdx].q} answers={qnaList[qIdx].a} handleQuestion={getQuestionIdx} />
+
+            {/* {qnaList.map((item, index) => (<QnaItem key={index} question={item.q} answers={item.a} />))} */}
         </section>
     );
 };

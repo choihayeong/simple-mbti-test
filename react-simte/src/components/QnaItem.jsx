@@ -3,7 +3,7 @@ import Button from "./Button";
 // import style from "../scss/QnaItem";
 
 const QnaItem = (props) => {
-    const {question, answers} = props;
+    const {question, answers, handleQuestion} = props;
 
     return (
         <div className="qna__item">
@@ -11,7 +11,7 @@ const QnaItem = (props) => {
                 {question}
             </div>
             <div className="qna__answers">
-                {answers.map((item, index) => <Button key={index} text={item.answer} />)}
+                {answers.map((item, index) => <Button key={index} text={item.answer} onClickEvent={handleQuestion} />)}
             </div>
         </div>
     )
@@ -20,6 +20,7 @@ const QnaItem = (props) => {
 QnaItem.propTypes = {
     question: PropTypes.string.isRequired,
     answers: PropTypes.array.isRequired,
-}
+    handleQuestion: PropTypes.func,
+};
 
 export default QnaItem;
