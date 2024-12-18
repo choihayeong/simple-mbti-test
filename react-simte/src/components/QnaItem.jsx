@@ -11,7 +11,7 @@ const QnaItem = (props) => {
                 {question}
             </div>
             <div className="qna__answers">
-                {answers.map((item, index) => <Button key={index} text={item.answer} onClickEvent={handleQuestion} />)}
+                {answers.map((item, index) => <Button key={index} btntext={item.answer} onClickEvent={() => handleQuestion(index)} />)}
             </div>
         </div>
     )
