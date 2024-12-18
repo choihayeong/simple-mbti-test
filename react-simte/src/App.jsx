@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import TestGate from "./routes/TestGate";
 import Home from "./routes/Home";
 import TestPage from "./routes/TestPage";
 import TestResult from "./routes/TestResult";
@@ -9,7 +10,11 @@ const routes = createBrowserRouter([
     element: <Home />
   },
   {
-    path: "/test-page",
+    path: "/gate/:id",
+    element: <TestGate />
+  },
+  {
+    path: "/test/:id",
     element: <TestPage />
   },
   {

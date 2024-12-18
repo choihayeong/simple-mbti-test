@@ -1,15 +1,28 @@
-import Button from "../components/Button";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const Home = () => {
-
+const Home = ({ allData }) => {
     return (
-        <>
+        <div id="wrap" className="wrap">
             <main className="main">
                 <h1>Simple MBTI Test</h1>
-                <Button btntext={`시작하기`} link={"/test-page"} />
+                <ul>
+                    {allData.map((item, index) => <li key={index}> <Link to={`/gate/${item.idx}`}>{item.title}</Link> </li>)}
+                </ul>
             </main>
-        </>
+        </div>
     );
 };
 
-export default Home;
+const mapStateToProps = state => {
+    return {
+        allData: state.json
+    }
+};
+
+Home.propTypes = {
+    allData: PropTypes.array,
+};
+
+export default connect(mapStateToProps)(Home);

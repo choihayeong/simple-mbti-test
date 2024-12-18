@@ -1,14 +1,26 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import QnaItem from "../components/QnaItem";
 import { actionCreators } from "../store";
 
-const TestPage = ({ qnaList, calcResult }) => {
+const TestPage = ({ allData, calcResult }) => {
+    const idx = useParams().id;
     let navigate = useNavigate();
 
+    const [qnaList, setQnaList] = useState([]);
     const [qIdx, setIdx] = useState(0);
+
+    const getQnaList = async() => {
+        const data = await allData.filter(item => item.idx === idx);
+
+        setQnaList(data[0].qnaList);
+    };
+
+    useEffect(() => {
+        getQnaList();
+    });
 
     const getQuestionIdx = (index) => {
         const question = qnaList[qIdx];
@@ -25,13 +37,16 @@ const TestPage = ({ qnaList, calcResult }) => {
 
     return (
         <section id="qna" className="qna">
-            <QnaItem question={qnaList[qIdx].q} answers={qnaList[qIdx].a} handleQuestion={getQuestionIdx} />
+            {JSON.stringify(qnaList)}
+
+            {/* <QnaItem question={qnaList[qIdx].q} answers={qnaList[qIdx].a} handleQuestion={getQuestionIdx} /> */}
         </section>
     );
 };
 
 const mapStateToProps = (state) => {    
     return {
+        allData: state.json,
         qnaList: state.qnaList,
         result: state.result,
     };
@@ -44,6 +59,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 TestPage.propTypes = {
+    allData:PropTypes.array,
     qnaList: PropTypes.array,
     result: PropTypes.array,
     calcResult: PropTypes.func
