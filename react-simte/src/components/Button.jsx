@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import style from "../scss/Button.module.scss";
 
-const Button = (props) => {
-    const { btntext, link, onClickEvent } = props;
+const Button = ({ btntext, link, cssClass, onClickEvent }) => {
+    const btnClasses = cssClass ? `${style.btn} ${style.btn}--${cssClass}` : style.btn;
 
     if (link) {
-        return <Link to={link} className={style.btn} onClick={onClickEvent}>{btntext} </Link>
+        return <Link to={link} className={btnClasses} onClick={onClickEvent}>{btntext} </Link>
     } else {
         return (
-            <button type="button" className={style.btn} onClick={onClickEvent}>{btntext}</button>
+            <button type="button" className={btnClasses} onClick={onClickEvent}>{btntext}</button>
         );
     }
 
@@ -18,6 +18,7 @@ const Button = (props) => {
 Button.propTypes = {
     btntext: PropTypes.string.isRequired,
     link: PropTypes.string,
+    cssClass: PropTypes.string,
     onClickEvent: PropTypes.func
 };
 

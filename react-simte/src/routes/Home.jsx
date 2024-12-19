@@ -1,14 +1,20 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import Thumbnail from "../components/Thumbnail";
+import "../scss/Home.scss";
 
 const Home = ({ allData }) => {
     return (
         <main className="main">
-            <h1>Simple MBTI Test</h1>
-            <ul>
-                {allData.map((item, index) => <li key={index}> <Link to={`/gate/${item.idx}`}>{item.title}</Link> </li>)}
-            </ul>
+            <div className="inner">
+                <h1 className="main__title">Simple MBTI Test</h1>
+                <ul className="main__list">
+                    {allData.map((item, index) => <li key={index}> <Link to={`/gate/${item.idx}`}>
+                        <Thumbnail altext={item.title} />
+                    </Link> </li>)}
+                </ul>
+            </div>
         </main>
     );
 };
@@ -20,7 +26,7 @@ const mapStateToProps = state => {
 };
 
 Home.propTypes = {
-    allData: PropTypes.array,
+    allData: PropTypes.array
 };
 
 export default connect(mapStateToProps)(Home);

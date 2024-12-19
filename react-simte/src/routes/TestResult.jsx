@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Button from "../components/Button";
 import { actionCreators } from "../store";
+import "../scss/TestResult.scss";
 
 const TestResult = ({ result, resetTest }) => {
     // console.log(result);
+    const idx = useParams().id;
+
     const [resultMBTI, setResultMBTI] = useState("");
 
     const getMBTIResult = () => {
@@ -48,15 +52,19 @@ const TestResult = ({ result, resetTest }) => {
 
     return (
         <section className="section section--result">
-            <h2>Test Result</h2>
+            <div className="inner">
+                <div className="result">
+                    <h2 className="section__title blind">ㄷㄱㄷㄱ 결과는...?</h2>
 
-            <div>
-                {resultMBTI}
-            </div>
+                    <div className="result-image">
+                        {resultMBTI}
+                    </div>
 
-            <div>
-                <Button btntext={`처음으로`} link={"/"} onClickEvent={resetTest} />
-                <Button btntext={`테스트 다시하기`} link={"/test-page"} onClickEvent={resetTest} />
+                    <div className="btn-group">
+                        <Button btntext={`처음으로`} link={"/"} onClickEvent={resetTest} />
+                        <Button btntext={`테스트 다시하기`} link={`/test/${idx}`} onClickEvent={resetTest} />
+                    </div>
+                </div>
             </div>
         </section>
     );

@@ -1,7 +1,22 @@
-$point-color: #5a5aff;
+$point-green: #e1ffe1;
 
 .btn {
     display: inline-block;
-    border: 1px dashed $point-color;
+    padding: 0.6em 1.2em;
+    border: 1px solid transparent;
     border-radius: 0.5rem;
+    background-color: $point-green;
+    font-size: 1.125rem;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+        border-color: #646cff;
+    }
+    
+    &:focus,
+    &:focus-visible {
+        outline: 0.25rem auto -webkit-focus-ring-color;
+    }
 }
+

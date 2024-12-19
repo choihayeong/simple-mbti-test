@@ -21,25 +21,20 @@ const TestPage = ({ allData }) => {
     });
 
     return (
-        <section id="qna" className="qna">
-            {loading ? "" : <TestItem listArr={qnaList} />}
+        <section className="section section--qna">
+            {loading ? "" : <TestItem listArr={qnaList} paramId={idx} />}
         </section>
     );
 };
 
 const mapStateToProps = (state) => {    
     return {
-        allData: state.json,
-        qnaList: state.qnaList,
-        result: state.result,
+        allData: state.json
     };
 };
 
 TestPage.propTypes = {
-    allData:PropTypes.array,
-    qnaList: PropTypes.array,
-    result: PropTypes.array,
-    calcResult: PropTypes.func
+    allData:PropTypes.array
 };
 
 export default connect(mapStateToProps)(TestPage);

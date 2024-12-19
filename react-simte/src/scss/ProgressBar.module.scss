@@ -1,0 +1,25 @@
+.progressbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0.5rem;
+    background-color: #ccc;
+
+    &__current {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: var(--current-width);
+        height: 100%;
+        background-color: #5a5aff;
+        transition: width 0.3s ease-out;
+    }
+}
+
+.progress {
+    padding-top: 3.75rem;
+    display: flex;
+    justify-content: center;
+}

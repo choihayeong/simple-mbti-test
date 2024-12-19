@@ -19,7 +19,7 @@ const routes = createBrowserRouter([
     element: <TestPage />
   },
   {
-    path: "/test-result",
+    path: "/result/:id",
     element: <TestResult />
   }
 ]);

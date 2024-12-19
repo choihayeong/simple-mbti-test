@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Button from "./Button";
-// import style from "../scss/QnaItem";
+import "../scss/QnaItem.scss";
 
 const QnaItem = (props) => {
     const {question, answers, handleQuestion} = props;

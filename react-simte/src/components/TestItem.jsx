@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import QnaItem from "./QnaItem";
 import { actionCreators } from "../store";
+import QnaItem from "./QnaItem";
+import ProgressBar from "./ProgressBar";
 
-const TestItem = ({ listArr, calcResult }) => {
+const TestItem = ({ paramId, listArr, calcResult }) => {
     const navigate = useNavigate();
     const [qIdx, setIdx] = useState(0);
 
@@ -14,7 +15,7 @@ const TestItem = ({ listArr, calcResult }) => {
         const answer = question.a[index];
 
         if (qIdx + 1 === listArr.length) {
-            navigate('/test-result');
+            navigate(`/result/${paramId}`);
             calcResult(answer.part.toString());
         } else {
             setIdx(qIdx + 1);
@@ -23,10 +24,14 @@ const TestItem = ({ listArr, calcResult }) => {
     };
 
     return (
-        <>
-            <QnaItem question={listArr[qIdx].q} answers={listArr[qIdx].a} handleQuestion={getQuestionIdx} />
-        </>
-    )
+        <div className="qna">
+            <ProgressBar current={qIdx + 1} total={listArr.length + 1} />
+
+            <div className="inner">
+                <QnaItem question={listArr[qIdx].q} answers={listArr[qIdx].a} handleQuestion={getQuestionIdx} />
+            </div>
+        </div>
+    );
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -36,6 +41,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 TestItem.propTypes = {
+    paramId: PropTypes.string.isRequired,
     listArr: PropTypes.array.isRequired,
     calcResult: PropTypes.func,
 };
