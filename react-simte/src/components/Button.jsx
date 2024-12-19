@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import style from "../scss/Button.module.scss";
 
-
 const Button = (props) => {
     const { btntext, link, onClickEvent } = props;
 

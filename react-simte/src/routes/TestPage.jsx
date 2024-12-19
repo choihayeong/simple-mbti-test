@@ -1,45 +1,28 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import QnaItem from "../components/QnaItem";
-import { actionCreators } from "../store";
+import TestItem from "../components/TestItem";
 
-const TestPage = ({ allData, calcResult }) => {
+const TestPage = ({ allData }) => {
     const idx = useParams().id;
-    let navigate = useNavigate();
 
     const [qnaList, setQnaList] = useState([]);
-    const [qIdx, setIdx] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     const getQnaList = async() => {
         const data = await allData.filter(item => item.idx === idx);
-
         setQnaList(data[0].qnaList);
+        setLoading(false);
     };
 
     useEffect(() => {
         getQnaList();
     });
 
-    const getQuestionIdx = (index) => {
-        const question = qnaList[qIdx];
-        const answer = question.a[index];
-
-        if (qIdx + 1 === qnaList.length) {
-            navigate('/test-result');
-            calcResult(answer.part.toString());
-        } else {
-            setIdx(qIdx + 1);
-            calcResult(answer.part.toString());
-        }
-    };
-
     return (
         <section id="qna" className="qna">
-            {JSON.stringify(qnaList)}
-
-            {/* <QnaItem question={qnaList[qIdx].q} answers={qnaList[qIdx].a} handleQuestion={getQuestionIdx} /> */}
+            {loading ? "" : <TestItem listArr={qnaList} />}
         </section>
     );
 };
@@ -52,12 +35,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        calcResult: (type) => dispatch(actionCreators.getResult(type)),
-    }
-};
-
 TestPage.propTypes = {
     allData:PropTypes.array,
     qnaList: PropTypes.array,
@@ -65,4 +42,4 @@ TestPage.propTypes = {
     calcResult: PropTypes.func
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TestPage);
+export default connect(mapStateToProps)(TestPage);

@@ -4,14 +4,12 @@ import PropTypes from "prop-types";
 
 const Home = ({ allData }) => {
     return (
-        <div id="wrap" className="wrap">
-            <main className="main">
-                <h1>Simple MBTI Test</h1>
-                <ul>
-                    {allData.map((item, index) => <li key={index}> <Link to={`/gate/${item.idx}`}>{item.title}</Link> </li>)}
-                </ul>
-            </main>
-        </div>
+        <main className="main">
+            <h1>Simple MBTI Test</h1>
+            <ul>
+                {allData.map((item, index) => <li key={index}> <Link to={`/gate/${item.idx}`}>{item.title}</Link> </li>)}
+            </ul>
+        </main>
     );
 };
 

@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Layout from "./components/Layout/layout";
 import TestGate from "./routes/TestGate";
 import Home from "./routes/Home";
 import TestPage from "./routes/TestPage";
@@ -23,10 +24,12 @@ const routes = createBrowserRouter([
   }
 ]);
 
-function App() {
+const App = () => {
   return (
-    <RouterProvider router={routes} />
-  )
-}
+    <Layout>
+      <RouterProvider router={routes} />
+    </Layout>
+  );
+};
 
-export default App
+export default App;
