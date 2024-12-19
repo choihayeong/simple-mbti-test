@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import TestItem from "../components/TestItem";
+import TestQna from "../components/TestQna";
 
 const TestPage = ({ allData }) => {
     const idx = useParams().id;
@@ -22,7 +22,7 @@ const TestPage = ({ allData }) => {
 
     return (
         <section className="section section--qna">
-            {loading ? "" : <TestItem listArr={qnaList} paramId={idx} />}
+            {loading ? "" : <TestQna listArr={qnaList} paramId={idx} />}
         </section>
     );
 };

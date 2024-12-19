@@ -1,11 +1,11 @@
-$point-green: #e1ffe1;
+$color--bg: #e1ffe1;
 
 .btn {
     display: inline-block;
     padding: 0.6em 1.2em;
     border: 1px solid transparent;
     border-radius: 0.5rem;
-    background-color: $point-green;
+    background-color: $color--bg;
     font-size: 1.125rem;
     font-weight: 500;
     cursor: pointer;

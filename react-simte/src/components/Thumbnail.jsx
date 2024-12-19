@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import style from "../scss/Thumbnail.module.scss";
+import style from "../scss/module/Thumbnail.module.scss";
 
 const Thumbnail = ({bgUrl, altext}) => {
     return (

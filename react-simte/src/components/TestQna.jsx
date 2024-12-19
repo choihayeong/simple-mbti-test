@@ -6,7 +6,7 @@ import { actionCreators } from "../store";
 import QnaItem from "./QnaItem";
 import ProgressBar from "./ProgressBar";
 
-const TestItem = ({ paramId, listArr, calcResult }) => {
+const TestQna = ({ paramId, listArr, calcResult }) => {
     const navigate = useNavigate();
     const [qIdx, setIdx] = useState(0);
 
@@ -40,10 +40,10 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-TestItem.propTypes = {
+TestQna.propTypes = {
     paramId: PropTypes.string.isRequired,
     listArr: PropTypes.array.isRequired,
     calcResult: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(TestItem);
+export default connect(null, mapDispatchToProps)(TestQna);

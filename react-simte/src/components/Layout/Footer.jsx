@@ -1,8 +1,10 @@
 import "../../scss/Layout/footer.scss";
 
 const Footer = () => {
+    const currentYear = new Date().getFullYear();
+
     return (
-        <footer className="footer">&copy;Copyright 2024 simte</footer>
+        <footer className="footer">&copy;Copyright {currentYear} simte</footer>
     );
 };
 

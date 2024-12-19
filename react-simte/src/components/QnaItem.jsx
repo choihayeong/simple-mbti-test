@@ -2,9 +2,7 @@ import PropTypes from "prop-types";
 import Button from "./Button";
 import "../scss/QnaItem.scss";
 
-const QnaItem = (props) => {
-    const {question, answers, handleQuestion} = props;
-
+const QnaItem = ({question, answers, handleQuestion}) => {
     return (
         <div className="qna__item">
             <div className="qna__question">

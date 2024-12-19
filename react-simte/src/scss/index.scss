@@ -15,7 +15,7 @@ body {
 }
 
 a {
-  color: $black;
+  color: #1a1a1a;
   font-weight: 500;
   // color: #646cff;
   text-decoration: none;
@@ -45,7 +45,7 @@ a {
   margin-inline: auto;
   padding-block: 3.75rem;
   color: $color--white;
-  background-color: $bg-color;
+  background-color: $color--bg;
   overflow: hidden;
 }
 
@@ -73,7 +73,7 @@ a {
 // MARK: Dark mode 
 @media (prefers-color-scheme: light) {
   :root {
-    color: $black;
+    color: #1a1a1a;
     background-color: #fafafa;
   }
   a:hover {

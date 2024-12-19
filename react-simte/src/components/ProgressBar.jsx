@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import style from "../scss/ProgressBar.module.scss";
+import style from "../scss/module/ProgressBar.module.scss";
 
 const ProgressBar = ({ current, total, split="/" }) => {
     return (

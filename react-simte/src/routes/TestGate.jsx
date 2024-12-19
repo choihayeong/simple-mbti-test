@@ -30,7 +30,7 @@ const TestGate = ({ allData }) => {
     );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
     return {
         allData: state.json
     }
